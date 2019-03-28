@@ -38,7 +38,8 @@ def get_options():
     return options
 
 
-def pick(options, header_filter=None, body_filter=None, match_filter=None):
+def pick(options,
+        header_filter=None, body_filter=None, match_filter=None, **kwargs):
     if header_filter is None:
         def header_filter(x):
             return papis.utils.format_doc(

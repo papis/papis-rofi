@@ -12,9 +12,9 @@ setup(
     author='Alejandro Gallo',
     author_email='aamsgallo@gmail.com',
     license='GPLv3',
-    url='https://github.com/papis/scripts/tree/master/papis-rofi',
+    url='https://github.com/papis/papis-rofi',
     install_requires=[
-        "papis>=0.7",
+        "papis>=0.8",
         "papis-python-rofi>=1.0.2",
     ],
     classifiers=[
@@ -50,10 +50,13 @@ setup(
     packages=[
         "papis_rofi",
     ],
-    entry_points=dict(
-        console_scripts=[
-            'papis-rofi=papis_rofi.main:main'
+    entry_points={
+        'papis.command': [
+            'rofi=papis_rofi.main:main'
+        ],
+        'papis.picker': [
+            'rofi=papis_rofi.main:pick'
         ]
-    ),
+    },
     platforms=['linux', 'osx'],
 )
