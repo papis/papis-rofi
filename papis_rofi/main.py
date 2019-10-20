@@ -171,7 +171,7 @@ class Gui(object):
                 indices = [indices]
             if key == self.edit_key:
                 for i in indices:
-                    edit(self.documents[i], editor=papis.config.get('xeditor'))
+                    edit(self.documents[i], editor=papis.config.get('editor'))
             elif key in [self.open_key, self.open_stay_key]:
                 for i in indices:
                     papis_open(self.documents[i])
