@@ -14,7 +14,7 @@ setup(
     license='GPLv3',
     url='https://github.com/papis/papis-rofi',
     install_requires=[
-        "papis>=0.8",
+        "papis>=0.9",
         "papis-python-rofi>=1.0.2",
     ],
     classifiers=[
