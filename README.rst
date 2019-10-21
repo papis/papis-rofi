@@ -1,5 +1,7 @@
-Papis-Rofi |Pypi| |RTD| |Python|
+Papis-Rofi
 ==========
+
+|Pypi| |RTD| |Python|
 
 This is a script that implements a GUI using the great `Rofi
 <https://github.com/DaveDavenport/rofi>`_
