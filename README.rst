@@ -1,3 +1,8 @@
+.. note::
+
+  Papis rofi is looking for a maintainer, otherwise ``papis-rofi``
+  will be only usable with papis ``v0.9`` in its stable configuration.
+
 Papis-Rofi
 ==========
 
