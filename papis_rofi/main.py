@@ -18,8 +18,9 @@ papis_rofi.config.register_default_settings()
 
 
 def papis_open(document):
-    file_to_open = document.get_files()
-    papis.api.open_file(file_to_open, wait=False)
+    files_to_open = document.get_files()
+    for f in files_to_open:
+        papis.api.open_file(f, wait=False)
 
 
 def get_options():
@@ -42,7 +43,7 @@ def pick(options,
         header_filter=None, body_filter=None, match_filter=None, **kwargs):
     if header_filter is None:
         def header_filter(x):
-            return papis.utils.format_doc(
+            return papis.document.format_doc(
                 papis.config.get('header-format', section='rofi-gui'), x
             )
     if len(options) == 1:
@@ -154,7 +155,7 @@ class Gui(object):
         header_format = papis.config.get("header-format", section="rofi-gui")
 
         def header_filter(x):
-            return papis.utils.format_doc(header_format, x)
+            return papis.document.format_doc(header_format, x)
 
         self.help_message = self.get_help()
         options.update(self.keys)
