@@ -1,6 +1,7 @@
 import rofi
 import papis.api
-import papis.utils
+import papis.pick
+import papis.format
 import papis.config
 import papis.database
 from papis.commands.rm import run as rm
@@ -39,34 +40,37 @@ def get_options():
     return options
 
 
-def pick(options,
-        header_filter=None, body_filter=None, match_filter=None, **kwargs):
-    if header_filter is None:
-        def header_filter(x):
-            return papis.document.format_doc(
-                papis.config.get('header-format', section='rofi-gui'), x
-            )
+def pick(options):
+
+    papis_dmenu.config.register_default_settings()
+    fmt = papis.config.get('header-format', section='dmenu-gui')
+
     if len(options) == 1:
-        indices = [0]
+        index = 0
+    elif len(options) == 0:
+        return ''
     else:
-        r = rofi.Rofi()
-        indices, key = r.select(
-            "Filter: ",
-            [
-                header_filter(d).replace(
-                    papis.config.get("sep", section="rofi-gui"),
-                    '\n'
-                ) for d in options
-            ],
-            **get_options()
-        )
-        r.close()
-    # TODO: Support multiple choice
-    if len(indices) == 0:
-        return []
-    elif len(indices) > 1:
-        logger.warning("Multiple choices is still not supported!")
-    return options[indices[0]]
+
+        def header_filter(x):
+            return papis.format.format(fmt, x)
+
+        headers = [header_filter(o) for o in options]
+        header = _dmenu_pick(headers)
+        if not header:
+            return None
+        index = headers.index(header)
+
+    return options[index]
+
+
+class Picker(papis.pick.Picker):
+
+    def __call__(self,
+                 items,
+                 header_filter,
+                 match_filter,
+                 default_index: int = 0):
+        return [pick(items)]
 
 
 class Gui(object):
@@ -155,7 +159,7 @@ class Gui(object):
         header_format = papis.config.get("header-format", section="rofi-gui")
 
         def header_filter(x):
-            return papis.document.format_doc(header_format, x)
+            return papis.format.format(header_format, x)
 
         self.help_message = self.get_help()
         options.update(self.keys)
