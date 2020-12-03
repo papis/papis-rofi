@@ -172,7 +172,7 @@ class Gui(object):
                     return docs
                 elif key == self.open_stay_key:
                     for doc in docs:
-                        papis_open(self.documents[i])
+                        papis_open(doc)
             elif key == self.delete_key:
                 for i in indices:
                     self.delete(self.documents[i])
