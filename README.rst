@@ -3,6 +3,8 @@ Papis-Rofi
 
 |Pypi| |RTD| |Python| |ghbadge|
 
+|gifimage|
+
 
 This is a script that implements a GUI using the great `Rofi
 <https://github.com/DaveDavenport/rofi>`_
@@ -45,4 +47,5 @@ or
    :target: https://badge.fury.io/py/papis-rofi
 .. |RTD| image:: https://readthedocs.org/projects/papis-rofi/badge/?version=latest
    :target: http://papis-rofi.readthedocs.io/en/latest/?badge=latest
+.. |gifimage| image:: https://papis.github.io/images/papis-rofi.gif
 .. |ghbadge| image:: https://github.com/papis/papis-rofi/workflows/CI/badge.svg
