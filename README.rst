@@ -1,12 +1,8 @@
-.. note::
-
-  Papis rofi is looking for a maintainer, otherwise ``papis-rofi``
-  will be only usable with papis ``v0.9`` in its stable configuration.
-
 Papis-Rofi
 ==========
 
-|Pypi| |RTD| |Python|
+|Pypi| |RTD| |Python| |ghbadge|
+
 
 This is a script that implements a GUI using the great `Rofi
 <https://github.com/DaveDavenport/rofi>`_
@@ -43,3 +39,4 @@ or
    :target: https://badge.fury.io/py/papis-rofi
 .. |RTD| image:: https://readthedocs.org/projects/papis-rofi/badge/?version=latest
    :target: http://papis-rofi.readthedocs.io/en/latest/?badge=latest
+.. |ghbadge| image:: https://github.com/papis/papis-rofi/workflows/CI/badge.svg
