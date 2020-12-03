@@ -7,14 +7,14 @@ import papis.database
 from papis.commands.rm import run as rm
 from papis.commands.edit import run as edit
 from papis.commands.browse import run as browse
-#from papis.commands.open import run as papis_open
+# from papis.commands.open import run as papis_open
 
 import logging
-logger = logging.getLogger("rofi")
 import click
 import papis_rofi
 import papis_rofi.config
 
+logger = logging.getLogger("rofi")
 papis_rofi.config.register_default_settings()
 
 
@@ -42,25 +42,14 @@ def get_options():
 
 def pick(options):
 
-    papis_dmenu.config.register_default_settings()
-    fmt = papis.config.get('header-format', section='dmenu-gui')
+    papis_rofi.config.register_default_settings()
 
     if len(options) == 1:
-        index = 0
+        return options
     elif len(options) == 0:
-        return ''
+        return []
     else:
-
-        def header_filter(x):
-            return papis.format.format(fmt, x)
-
-        headers = [header_filter(o) for o in options]
-        header = _dmenu_pick(headers)
-        if not header:
-            return None
-        index = headers.index(header)
-
-    return options[index]
+        return Gui().main(options)
 
 
 class Picker(papis.pick.Picker):
@@ -70,7 +59,7 @@ class Picker(papis.pick.Picker):
                  header_filter,
                  match_filter,
                  default_index: int = 0):
-        return [pick(items)]
+        return pick(items)
 
 
 class Gui(object):
@@ -87,7 +76,7 @@ class Gui(object):
     query_key = 8
     refresh_key = 9
 
-    def __init__(self):
+    def __init__(self, documents=[]):
         # Set default picker
         self.db = papis.database.get()
         self.documents = []
@@ -178,10 +167,12 @@ class Gui(object):
                 for i in indices:
                     edit(self.documents[i], editor=papis.config.get('editor'))
             elif key in [self.open_key, self.open_stay_key]:
-                for i in indices:
-                    papis_open(self.documents[i])
+                docs = [self.documents[i] for i in indices]
                 if key == self.open_key:
-                    return 0
+                    return docs
+                elif key == self.open_stay_key:
+                    for doc in docs:
+                        papis_open(self.documents[i])
             elif key == self.delete_key:
                 for i in indices:
                     self.delete(self.documents[i])
@@ -222,6 +213,7 @@ def main(query):
     """A rofi based GUI for papis"""
     documents = papis.database.get().query(query)
     return Gui().main(documents)
+
 
 if __name__ == "__main__":
     main()

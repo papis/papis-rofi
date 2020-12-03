@@ -90,11 +90,11 @@ configuration_settings = {
         "markup_rows": True,
         "multi_select": True,
         "case_sensitive": False,
-        "header-format": \
-            "<b>{doc[title]}</b>\n"\
+        "header-format":
+            "<b>{doc[title]}</b>\n"
             "{doc[empty]}  <i>{doc[author]}</i>\n"
             "{doc[empty]}  <span foreground=\"red\">"
-            "({doc[year]:->4})</span>"\
+            "({doc[year]:->4})</span>"
             "<span foreground=\"green\">{doc[tags]}</span>",
     },
 }
