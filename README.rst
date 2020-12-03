@@ -18,6 +18,12 @@ Just hit
 
 and press `Alt+h` for help.
 
+You can use it also as a picker, i.e.
+
+::
+
+  papis -s picktool rofi open
+
 Installation
 ------------
 
