@@ -55,7 +55,7 @@ setup(
             'rofi=papis_rofi.main:main'
         ],
         'papis.picker': [
-            'rofi=papis_papis_rofi.main:Picker'
+            'rofi=papis_rofi.main:Picker'
         ]
     },
     platforms=['linux', 'osx'],
