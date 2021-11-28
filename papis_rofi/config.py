@@ -37,6 +37,9 @@ Rofi gui
 .. papis-config:: sep
     :section: rofi-gui
 
+.. papis-config:: theme
+    :section: rofi-gui
+
 .. papis-config:: width
     :section: rofi-gui
 
@@ -87,6 +90,7 @@ configuration_settings = {
         "fullscreen": False,
         "normal_window": False,
         "fixed_lines": 20,
+        "theme": None,
         "markup_rows": True,
         "multi_select": True,
         "case_sensitive": False,

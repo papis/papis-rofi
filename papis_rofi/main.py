@@ -34,7 +34,7 @@ def get_options():
     for key in ["width", "eh", "lines", "fixed_lines"]:
         options[key] = papis.config.getint(key, section="rofi-gui")
 
-    for key in ["sep"]:
+    for key in ["sep", "theme"]:
         options[key] = papis.config.get(key, section="rofi-gui")
 
     return options
@@ -165,7 +165,7 @@ class Gui(object):
                 indices = [indices]
             if key == self.edit_key:
                 for i in indices:
-                    edit(self.documents[i], editor=papis.config.get('editor'))
+                    edit(self.documents[i])
             elif key in [self.open_key, self.open_stay_key]:
                 docs = [self.documents[i] for i in indices]
                 if key == self.open_key:
