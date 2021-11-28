@@ -34,7 +34,7 @@ def get_options():
     for key in ["width", "eh", "lines", "fixed_lines"]:
         options[key] = papis.config.getint(key, section="rofi-gui")
 
-    for key in ["sep"]:
+    for key in ["sep", "theme"]:
         options[key] = papis.config.get(key, section="rofi-gui")
 
     return options

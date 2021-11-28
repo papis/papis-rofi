@@ -15,7 +15,7 @@ setup(
     url='https://github.com/papis/papis-rofi',
     install_requires=[
         "papis>=0.11.1",
-        "papis-python-rofi==1.0.2",
+        "papis-python-rofi==1.0.3",
     ],
     classifiers=[
         'Environment :: Console',
