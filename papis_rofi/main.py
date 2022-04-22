@@ -148,7 +148,10 @@ class Gui(object):
         header_format = papis.config.get("header-format", section="rofi-gui")
 
         def header_filter(x):
-            return papis.format.format(header_format, x)
+            if isinstance(x, papis.format.Document) or isinstance(x, dict):
+                return papis.format.format(header_format, x)
+            else:
+                return x
 
         self.help_message = self.get_help()
         options.update(self.keys)
