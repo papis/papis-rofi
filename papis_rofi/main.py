@@ -164,6 +164,9 @@ class Gui(object):
                 select=indices,
                 **options
             )
+            if indices == [-1]:
+                indices = []
+                key = -1
             if not isinstance(indices, list):
                 indices = [indices]
             if key == self.edit_key:
