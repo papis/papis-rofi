@@ -194,6 +194,10 @@ class Gui(object):
             elif key == self.query_key:
                 self.query_string = self.window.text_entry("Query input: ")
                 self.set_docs_from_query()
+        else:
+            # If esc or alt-q key pressed, select no documents
+            # Papis does not support NoneType returns here.
+            return []
 
     def delete(self, doc):
         answer = self.window.text_entry(
